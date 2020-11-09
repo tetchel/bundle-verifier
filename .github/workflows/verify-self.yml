@@ -5,7 +5,7 @@ env:
   BUNDLE_COMMAND: "npm run bundle"
 jobs:
   verify-latest:
-    name: Verify latest bundle is up-to-date
+    name: Verify Latest Bundle
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,24 +23,24 @@ jobs:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}
 
-  # verify-release:
-  #   env:
-  #     ACTION_REPO: "tetchel/bundle-verifier"
-  #     TAG: "v0.0.1"
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2
-  #     env:
-  #       # DEFAULT_BRANCH: main
-  #       ref: ${{ env.TAG }}
-  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  verify-release:
+    name: Verify Tagged Bundle
+    env:
+      TAG: "v0.0.1"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      env:
+        # DEFAULT_BRANCH: main
+        ref: ${{ env.TAG }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  #   - name: Install
-  #     run: npm ci
+    - name: Install
+      run: npm ci
 
-  #   - name: Verify Tagged Bundle
-  #     uses: tetchel/bundle-verifier-action@${{ env.TAG }}
-  #     with:
-  #       bundle_file: ${{ env.BUNDLE_FILE }}
-  #       bundle_command: ${{ env.BUNDLE_COMMAND }}
+    - name: Verify Tagged Bundle
+      uses: tetchel/bundle-verifier-action@v0.0.1
+      with:
+        bundle_file: ${{ env.BUNDLE_FILE }}
+        bundle_command: ${{ env.BUNDLE_COMMAND }}
