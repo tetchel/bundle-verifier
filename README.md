@@ -6,10 +6,26 @@
 
 Repositories that include GitHub actions are unusual in that their production bundle is committed to the repository.
 
-This leads to a potential inconsistency where, if a developer updates the source code but does not run the compiler and/or bundler, the source code may not match the distribution that is committed. This is best resolved through pre-commit hooks.
+This leads to a potential inconsistency where, if a developer updates the source code but does not run the compiler and/or bundler, the source code may not match the distribution that is committed. This is best resolved through [pre-commit hooks](#hooks).
 
 The job of this action is to bundle the source code and compare the generated bundle to that which was committed. If they match, the distibution is up-to-date and the action succeeds. Otherwise, the action fails.
 
-If you are not using a bundler for your action, you should be to significantly reduce download size. `@vernel/ncc` and `webpack` are recommended.
+There is no reason that this action can't be used by projects other than GitHub Actions; that's just what I found this useful for.
+
+## Inputs
+
+The action has two inputs.
+
+| Input | Description |
+| ---   | --- |
+| `bundle_file` | Path, relative to the repository root, to your bundled js file. Only one file (not directory) is supported. <br>For this repository, it is `dist/index.js`. |
+| `bundle_command`| Command to run to generate your bundle. An `npm` or `yarn` script is recommended, which can in turn execute your bundler, such as `webpack` or `ncc`.<br>For this repository, it is `npm run bundle`. |
+
+## Example
 
 See [this repository's workflow](./.github/workflows/verify-self.yml) for an example.
+
+## Hooks
+To ensure bundle consistency, this repository uses git pre-commit hooks.
+
+To install the hooks, run `cp hooks/* .git/hooks/` and accept any overwrites.

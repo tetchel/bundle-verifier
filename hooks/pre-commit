@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "--- Pre-commit ---"
+
+set -ex
+npm run bundle
+set +x 
+
+echo "Success"
