@@ -1,0 +1,18 @@
+name: 'Bundle Verifier'
+description: 'GitHub Action to verify the committed bundle is up-to-date with the source'
+inputs:
+  bundle_command:
+    description: "Command to generate your bundle. An npm/yarn script is recommended."
+    required: true
+  bundle_file:
+    description: 'Output directory where your bundle is located.'
+    required: true
+    default: 'dist'
+  # use_git_diff:
+  #   description: 'Use git diff to check if the bundle is up-to-date. Set if outputting the diffed file contents is useful.'
+  #   required: false
+  #   default: 'false'
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
