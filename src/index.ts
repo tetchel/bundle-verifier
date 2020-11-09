@@ -12,7 +12,8 @@ async function moveBundleFile(bundleFilePath: string): Promise<string> {
     const bundleFileDir = path.dirname(bundleFilePath);
 
     const backupPath = path.join(bundleFileDir, bundleFileName + ".backup");
-    await ghIO.cp(bundleFilePath, backupPath);
+    ghCore.info(`Move ${bundleFilePath} to ${backupPath}`);
+    await ghIO.mv(bundleFilePath, backupPath);
     return backupPath;
 }
 

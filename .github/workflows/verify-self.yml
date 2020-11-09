@@ -26,7 +26,7 @@ jobs:
   verify-release:
     name: Verify Tagged Bundle
     env:
-      TAG: "v0.0.1"
+      TAG: "v0.0.2"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -40,7 +40,7 @@ jobs:
       run: npm ci
 
     - name: Verify Tagged Bundle
-      uses: tetchel/bundle-verifier-action@v0.0.1
+      uses: tetchel/bundle-verifier-action@v0.0.2   # not sure why env.TAG doesn't work.
       with:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}
