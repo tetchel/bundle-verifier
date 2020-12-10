@@ -1,5 +1,5 @@
 name: 'Bundle Verifier'
-description: 'GitHub Action to verify the committed bundle is up-to-date with the source'
+description: 'For projects which commit their distribution bundles to SCM, this action verifies the committed bundle is up-to-date with the source'
 inputs:
   bundle_command:
     description: "Command to generate your bundle. An npm/yarn script is recommended."
