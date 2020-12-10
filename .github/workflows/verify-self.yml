@@ -18,7 +18,7 @@ jobs:
       run: npm ci
 
     - name: Verify Latest Bundle
-      uses: tetchel/bundle-verifier-action@main
+      uses: tetchel/bundle-verifier@main
       with:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}
@@ -40,7 +40,7 @@ jobs:
       run: npm ci
 
     - name: Verify Tagged Bundle
-      uses: tetchel/bundle-verifier-action@v0.0.2   # not sure why env.TAG doesn't work.
+      uses: tetchel/bundle-verifier@v0.0.2   # not sure why env.TAG doesn't work.
       with:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}

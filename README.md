@@ -1,9 +1,9 @@
 # GitHub Action Bundle Verifier
 
-[![Verify Self](https://github.com/tetchel/bundle-verifier-action/workflows/Verify%20Self/badge.svg)](https://github.com/tetchel/bundle-verifier-action/actions?query=workflow%3A%22Verify+Self%22)
-[![Tag](https://img.shields.io/github/v/tag/tetchel/bundle-verifier-action)](https://github.com/tetchel/bundle-verifier-action/tags)
-[![Bundle Size](https://img.shields.io/github/size/tetchel/bundle-verifier-action/dist/index.js)](./dist/)
-[![License](https://img.shields.io/github/license/tetchel/bundle-verifier-action)](./LICENSE)
+[![Verify Self](https://github.com/tetchel/bundle-verifier/workflows/Verify%20Self/badge.svg)](https://github.com/tetchel/bundle-verifier/actions?query=workflow%3A%22Verify+Self%22)
+[![Tag](https://img.shields.io/github/v/tag/tetchel/bundle-verifier)](https://github.com/tetchel/bundle-verifier/tags)
+[![Bundle Size](https://img.shields.io/github/size/tetchel/bundle-verifier/dist/index.js)](./dist/)
+[![License](https://img.shields.io/github/license/tetchel/bundle-verifier)](./LICENSE)
 
 GitHub Action repositories are unusual in that their production bundle is committed to the repository.
 
