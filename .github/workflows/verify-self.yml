@@ -1,46 +1,37 @@
 name: Verify Self
 on: [ push, pull_request ]
+
 env:
   BUNDLE_FILE: "dist/index.js"
   BUNDLE_COMMAND: "npm run bundle"
+
 jobs:
   verify-latest:
     name: Verify Latest Bundle
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      env:
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
 
     - name: Install
       run: npm ci
 
     - name: Verify Latest Bundle
-      uses: tetchel/bundle-verifier@main
+      uses: ./
       with:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}
 
   verify-release:
     name: Verify Tagged Bundle
-    env:
-      TAG: "v0.0.2"
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      env:
-        # DEFAULT_BRANCH: main
-        ref: ${{ env.TAG }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
 
     - name: Install
       run: npm ci
 
     - name: Verify Tagged Bundle
-      uses: tetchel/bundle-verifier@v0.0.2   # not sure why env.TAG doesn't work.
+      uses: tetchel/bundle-verifier@v1
       with:
         bundle_file: ${{ env.BUNDLE_FILE }}
         bundle_command: ${{ env.BUNDLE_COMMAND }}
